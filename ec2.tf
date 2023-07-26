@@ -1,24 +1,7 @@
-# Select newest AMI-id
-
-data "aws_ami" "nf_latest_linux_ami" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  owners = ["amazon"] # Amazon
-}
-
 ###Create EC2
 resource "aws_instance" "nf_webserver"{
     #ami                    = data.aws_ami.nf_latest_linux_ami.id
-    ami                    = "ami-08541bb85074a743a"
+    ami                    = "ami-053482eb0c86d0d7c"
     instance_type          = "t3.micro"
     key_name               = "vockey"
     vpc_security_group_ids = [aws_security_group.nf_sg_http.id]
